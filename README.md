@@ -1,1 +1,1 @@
-## alx-interview.git
+## alx-interview
