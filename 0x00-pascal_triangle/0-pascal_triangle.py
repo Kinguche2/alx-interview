@@ -1,34 +1,38 @@
 #!/usr/bin/python3
 """
-Pascals triangle
+Define function that returns a list of lists of integers
+representing the Pascal's triangle of n
 """
 
+
 def pascal_triangle(n):
-
-	# An auxiliary array to store
-	# generated pascal triangle values
-	arr = [[0 for x in range(n)]
-			for y in range(n)]
-
-	# Iterate through every line
-	# and print integer(s) in it
-	for line in range (0, n):
-
-		# Every line has number of
-		# integers equal to line number
-		for i in range (0, line + 1):
-
-			# First and last values
-			# in every row are 1
-			if(i is 0 or i is line):
-				arr[line][i] = 1
-				print(arr[line][i], end = " ")
-
-			# Other values are sum of values
-			# just above and left of above
-			else:
-				arr[line][i] = (arr[line - 1][i - 1] +
-								arr[line - 1][i])
-				print(arr[line][i], end = " ")			
-		print("\n", end = "")
-
+    """
+    Creates a list of lists of integers representing Pascal's triangle
+    parameters:
+        n [int]:
+            the number of rows of Pascal's triangle to recreate
+    return:
+        [list of lists of ints]:
+            representation of Pascal's triangle
+    """
+    if type(n) is not int:
+        raise TypeError("n must be an integer")
+    triangle = []
+    if n <= 0:
+        return triangle
+    previous = [1]
+    for row_index in range(n):
+        rowlist = []
+        if row_index == 0:
+            rowlist = [1]
+        else:
+            for i in range(row_index + 1):
+                if i == 0:
+                    rowlist.append(0 + previous[i])
+                elif i == (row_index):
+                    rowlist.append(previous[i - 1] + 0)
+                else:
+                    rowlist.append(previous[i - 1] + previous[i])
+        previous = rowlist
+        triangle.append(rowlist)
+    return triangle
