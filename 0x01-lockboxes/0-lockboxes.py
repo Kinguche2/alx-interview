@@ -11,7 +11,6 @@ Return True if all boxes can be opened, else return False
 """
 
 
-
 def canUnlockAll(boxes):
     """ method that determines if all the boxes can be opened """
     newlist = [0]
