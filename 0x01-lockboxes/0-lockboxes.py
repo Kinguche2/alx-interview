@@ -3,6 +3,7 @@
 
 
 def canUnlockAll(boxes):
+    """ """
     newlist = []
     k = len(boxes)
     for i in boxes:
